@@ -31,3 +31,28 @@ jobs:
                       sudo apt install nodejs -y
                       node -v
                       npm -v
+            - name: copy files
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                host: ${{ secrets.EC2_HOST_BE }}
+                username: ${{ secrets.EC2_USERNAME }}
+                key: ${{ secrets.EC2_SSH_KEY }}
+                port: 22
+                source: ./backend
+                target: /home/ubuntu/
+            - name: chack data copied
+              uses: appleboy/ssh-action@v1.0.3
+              with: 
+                  host: ${{ secrets.EC2_HOST_BE }}
+                  username: ${{ secrets.EC2_USERNAME }}
+                  key: ${{ secrets.EC2_SSH_KEY }}
+                  port: 22
+                  script: |
+                      whoami
+                      pwd
+                      cd /home/ubuntu/backend/
+                      echo "MONGO_URI='mongodb+srv://${{ secrets.MONGO_USERNAME }}:${{ secrets.MONGO_KEY }}@taskmanagementcluster.tsyynim.mongodb.net/travelMemory'" > .env
+                      echo "PORT=3000" >> .env
+                      sudo npm install
+                      sudo node index.js
+
