@@ -30,8 +30,7 @@ jobs:
                       sudo apt-get update
                       sudo apt install nodejs -y
                       node -v
-                      npm -v
-                      sudo rm -rf /home/ubuntu/
+                      npm -v                      
                       sudo mkdir -p /home/ubuntu/frontend
                       sudo chown -R ${{ secrets.EC2_USERNAME }} /home/ubuntu/frontend
                       sudo chmod -R 755 /home/ubuntu/frontend
