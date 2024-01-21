@@ -30,10 +30,10 @@ jobs:
                       sudo apt-get update
                       sudo apt install nodejs -y
                       cd /home/ubuntu/
-                      sudo apt install git -y
+                      chmod +x .env
                       sudo git clone https://github.com/surendergupta/TravelMemory.git
                       cd /home/ubuntu/TravelMemory/backend/
                       echo "MONGO_URI='mongodb+srv://${{ secrets.MONGO_USERNAME }}:${{ secrets.MONGO_KEY }}@taskmanagementcluster.tsyynim.mongodb.net/travelMemory'" > .env
                       echo "PORT=3000" >> .env
-                      npm install
-                      node index.js
+                      sudo npm install
+                      sudo node index.js
