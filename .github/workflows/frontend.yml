@@ -38,5 +38,16 @@ jobs:
                 username: ${{ secrets.EC2_USERNAME }}
                 key: ${{ secrets.EC2_SSH_KEY }}
                 port: 22
-                source: sudo git clone https://github.com/surendergupta/TravelMemory.git
+                source: ./
                 target: /home/ubuntu/
+            - name: chack data copied
+              uses: appleboy/ssh-action@v1.0.3
+              with: 
+                  host: ${{ secrets.EC2_HOST_FE }}
+                  username: ${{ secrets.EC2_USERNAME }}
+                  key: ${{ secrets.EC2_SSH_KEY }}
+                  port: 22
+                  script: |
+                      whoami
+                      pwd
+                      ls
