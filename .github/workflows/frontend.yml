@@ -50,4 +50,7 @@ jobs:
                   script: |
                       whoami
                       pwd
-                      ls
+                      cd /home/ubuntu/frontend/
+                      echo "export const baseUrl = 'http://${{ secrets.EC2_HOST_BE}}:3000'" > ./src/url.js
+                      sudo npm install
+                      npm start
