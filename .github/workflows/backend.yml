@@ -31,6 +31,10 @@ jobs:
                       sudo apt install nodejs -y
                       node -v
                       npm -v
+                      sudo rm -rf /home/ubuntu/
+                      sudo mkdir -p /home/ubuntu/backend
+                      sudo chown -R ${{ secrets.EC2_USERNAME }} /home/ubuntu/backend
+                      sudo chmod -R 755 /home/ubuntu/backend
             - name: copy files
               uses: appleboy/scp-action@v0.1.7
               with:
