@@ -29,11 +29,5 @@ jobs:
                       echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
                       sudo apt-get update
                       sudo apt install nodejs -y
-                      cd /home/ubuntu/
-                      chmod +x .env
-                      sudo git clone https://github.com/surendergupta/TravelMemory.git
-                      cd /home/ubuntu/TravelMemory/backend/
-                      echo "MONGO_URI='mongodb+srv://${{ secrets.MONGO_USERNAME }}:${{ secrets.MONGO_KEY }}@taskmanagementcluster.tsyynim.mongodb.net/travelMemory'" > .env
-                      echo "PORT=3000" >> .env
-                      sudo npm install
-                      sudo node index.js
+                      node -v
+                      npm -v
