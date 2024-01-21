@@ -31,9 +31,7 @@ jobs:
                       sudo apt install nodejs -y
                       node -v
                       npm -v                      
-                      sudo mkdir -p /home/ubuntu/frontend
-                      sudo chown -R ${{ secrets.EC2_USERNAME }} /home/ubuntu/frontend
-                      sudo chmod -R 755 /home/ubuntu/frontend
+                      sudo mkdir -p /home/ubuntu/frontend                     
                       
             - name: copy file via git repo
               uses: appleboy/scp-action@v0.1.7
