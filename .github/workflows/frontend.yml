@@ -30,8 +30,7 @@ jobs:
                       sudo apt-get update
                       sudo apt install nodejs -y
                       node -v
-                      npm -v                      
-                      sudo mkdir -p /home/ubuntu/frontend                     
+                      npm -v                                      
                       
             - name: copy file via git repo
               uses: appleboy/scp-action@v0.1.7
