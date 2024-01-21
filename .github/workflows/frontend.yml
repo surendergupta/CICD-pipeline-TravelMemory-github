@@ -31,6 +31,11 @@ jobs:
                       sudo apt install nodejs -y
                       node -v
                       npm -v
+                      sudo rm -rf /home/ubuntu/
+                      sudo mkdir -p /home/ubuntu/frontend
+                      sudo chown -R ${{ secrets.EC2_USERNAME }} /home/ubuntu/frontend
+                      sudo chmod -R 755 /home/ubuntu/frontend
+                      
             - name: copy file via git repo
               uses: appleboy/scp-action@v0.1.7
               with:
@@ -38,7 +43,7 @@ jobs:
                 username: ${{ secrets.EC2_USERNAME }}
                 key: ${{ secrets.EC2_SSH_KEY }}
                 port: 22
-                source: ./
+                source: ./frontend
                 target: /home/ubuntu/
             - name: chack data copied
               uses: appleboy/ssh-action@v1.0.3
